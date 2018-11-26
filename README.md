@@ -1,7 +1,7 @@
 # summary
 summary
-spring
-	1、IOC 依赖注入：
+#spring
+	##1、IOC 依赖注入：
 		bean作用域:
 			singleton		每次返回相同的实例
 			prototype		每次返回不同的实例
@@ -11,28 +11,28 @@ spring
 		
 		与Java中的单例多例不相同，作用于仅为ioc范围内
 
-	2、容器配置：xml 注解 Java
-		1.xml:spring依赖注入的形式
+	##2、容器配置：xml 注解 Java
+		###1.xml:spring依赖注入的形式
 			以setter注入 
 			以构造器注入（不建议使用，在实例化是造成资源浪费）
 			优先状态：构造器先执行，setter覆盖构造器
 			
-		2.注解：
+		###2.注解：
 			@AutoWire	@inject
 			@Component 	@Service	@Controller
 			@Qualifier("") 	@Resource(name="")
 			
-		3.java配置：
+		###3.java配置：
 			@configuration配置类	
 			@bean	注入bean
 			@ComponentScan(basePackages="xx.xx")	指定加载时扫描哪个文件
 			@Primary	在bean相同的情况下使用primary的属性
 			
-		4.加载配置：
+		###4.加载配置：
 			ClassPathXmlApplicationContext("xx.xml")
 			FileSystemXmlApplicationContext("classpath:xx.xml")
 			
-		5.自动加载：
+		###5.自动加载：
 			AnnotationConfigApplicationContext()
 			//扫描指定路径下的文件和子包
 			anno.scan("com.example");
@@ -47,10 +47,10 @@ spring
 			
 			
 			
-spring boot 约定大于配置
-	1、配置对实体类属性赋值
-		1.实体类添加@Configuration	@ConfigurationProperties(prefix = "前缀名")
-		2.配置类中根据前缀名.属性=xx进行赋值
+#spring boot 约定大于配置
+	##1、配置对实体类属性赋值
+		###1.实体类添加@Configuration	@ConfigurationProperties(prefix = "前缀名")
+		###2.配置类中根据前缀名.属性=xx进行赋值
 		3.在@Controller和@RestController的类中，@AutoWired实体类，使用实体类对象的方法进行输出。
 		4.配置类的常用配置：以properties为例
 			端口号：server.port=8088 
