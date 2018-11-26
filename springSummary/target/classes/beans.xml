@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- 容器配置的第一种：xml文件 -->
+	
+	<bean id="helloWorldService" class="com.example.service.HelloWorldService">
+		<!-- 以属性的setter方法赋值 -->
+		<property name="name" value="zhangsan"></property>
+		<!-- 以构造方法方式为属性赋值 -->
+		<constructor-arg type="String" value="lisi"></constructor-arg>
+	</bean>
+	
+	<bean id="hello" class="com.example.service.HelloWorldService">
+		<property name="name" value="lisi"></property>
+	</bean>
+
+	<!-- 在初始化时调用初始化方法init-method,在销毁时调用销毁方法destroy-method -->
+	<!-- 若不指定初始化和销毁方法，执行默认的初始化和销毁方法 -->
+	<bean id="life" class="com.example.beans.LifeBean" init-method="start"
+		destroy-method="stop">
+	</bean>
+
+
+	<!-- 注入类及其属性值-->
+	<!-- 注意:注入的类必须有有参和无参构造方法以及getter setter方法  -->
+	<bean id="abean" class="com.example.beans.ABean">
+		<property name="name" value="this is abean"></property>
+	</bean>
+	<bean id="bbean" class="com.example.beans.BBean">
+		<property name="name" value="this is bbean"></property>
+	</bean>
+	
+	<!-- 属性方式，依赖其他类使用ref，本类属性使用value -->
+	<bean id="allbean1" class="com.example.beans.AllBean">
+		<property name="abean">
+			<ref bean="abean" />
+		</property>
+		<property name="bbean">
+			<ref bean="bbean" />
+		</property>
+		<property name="i" value="111"></property>
+	</bean>
+	
+	<!-- 构造方法的索引方式index，依赖其他类使用ref，本类属性使用value -->
+	<bean id="allbean2" class="com.example.beans.AllBean">
+		<constructor-arg index="0" ref="abean"></constructor-arg>
+		<constructor-arg index="1" ref="bbean"></constructor-arg>
+		<constructor-arg index="2" value="222"></constructor-arg>
+	</bean>
+	
+	<!-- 构造方法的类型方式type，依赖其他类使用ref，本类属性使用value -->
+	<bean id="allbean3" class="com.example.beans.AllBean">
+		<constructor-arg type="ABean" ref="abean"></constructor-arg>
+		<constructor-arg type="BBean" ref="bbean"></constructor-arg>
+		<constructor-arg type="int" value="333"></constructor-arg>
+	</bean>
+	
+	<!-- 构造方法的属性名方式name，依赖其他类使用ref，本类属性使用value -->
+	<bean id="allbean4" class="com.example.beans.AllBean">
+		<constructor-arg name="abean" ref="abean"></constructor-arg>
+		<constructor-arg name="bbean" ref="bbean"></constructor-arg>
+		<constructor-arg name="i" value="444"></constructor-arg>
+	</bean>
+	
+</beans>
