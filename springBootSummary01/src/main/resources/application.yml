@@ -1,0 +1,13 @@
+server:
+  port: 8083
+
+student: 
+  name: student
+  age: ${random.int}
+  #${random.int}表示随机int类型的数值
+my: 
+  na: nana
+#spring:
+#  profiles:
+#    active:
+#    - pro

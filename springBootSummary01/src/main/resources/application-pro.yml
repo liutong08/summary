@@ -1,0 +1,5 @@
+server:
+  port: 1236
+student: 
+  name: yml-pro
+  age: 36

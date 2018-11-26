@@ -1,0 +1,7 @@
+server:
+  port: 1234
+#  端口号
+student: 
+  name: yml-dev
+  age: 9
+#实体类属性赋值 setter方法

@@ -1,0 +1,5 @@
+server:
+  port: 1235
+student: 
+  name: yml-test
+  age: 25
