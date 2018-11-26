@@ -1,0 +1,22 @@
+#name: default
+#指定配置环境
+spring:
+  profiles:
+    active:
+    - dev
+#多个环境配置
+---
+spring: 
+  profiles: dev
+name: dev
+---
+spring: 
+  profiles: hello
+name: hello
+---
+spring: 
+  profiles: bye
+name: bye
+---
+spring: 
+  profiles: generic
